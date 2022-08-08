@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Item = styled.li`
+export const FriendListItem = styled.li`
   display: ${p => p.theme.display.f};
   align-items: ${p => p.theme.position.c};
   background-color: ${p => p.theme.colors.bgCard};

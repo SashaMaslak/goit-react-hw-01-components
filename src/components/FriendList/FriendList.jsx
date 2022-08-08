@@ -3,7 +3,7 @@ import { theme } from 'theme';
 import { Box } from '../Box';
 
 import {
-  Item,
+  FriendListItem,
   Status,
   Avatar,
   Name,
@@ -23,11 +23,11 @@ export const FriendList = ({ friends }) => {
       p={theme.space[5]}
     >
         {friends.map(({ avatar, name, isOnline, id }) => (
-          <Item key={id}>
+          <FriendListItem key={id}>
             <Status status={isOnline} />
             <Avatar src={avatar} alt="User avatar" />
             <Name>{name}</Name>
-          </Item>
+          </FriendListItem>
         ))}
     </Box>
   );
