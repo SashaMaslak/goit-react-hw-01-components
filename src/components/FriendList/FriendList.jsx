@@ -1,21 +1,15 @@
 import PropTypes from 'prop-types';
 import { theme } from 'theme';
 import { Box } from '../Box';
-
-import {
-  FriendListItem,
-  Status,
-  Avatar,
-  Name,
-} from './FriendList.styled';
+import {FriendListItem} from './FriendListItem/FriendListItem';
 
 export const FriendList = ({ friends }) => {
   return (
     <Box
-      as={theme.as.s}
+      as={theme.as.ul}
       display={theme.display.f}
       flexDirection='column'
-      gridGap={theme.space[2]}
+      gridGap={theme.space[2]} 
       width={theme.space[11]}
       bg={theme.colors.bgSection}
       my={theme.space[5]}
@@ -23,11 +17,12 @@ export const FriendList = ({ friends }) => {
       p={theme.space[5]}
     >
         {friends.map(({ avatar, name, isOnline, id }) => (
-          <FriendListItem key={id}>
-            <Status status={isOnline} />
-            <Avatar src={avatar} alt="User avatar" />
-            <Name>{name}</Name>
-          </FriendListItem>
+          <FriendListItem
+            key={id}
+            avatar={avatar}
+            name={name}
+            isOnline={isOnline}
+          />
         ))}
     </Box>
   );
@@ -35,7 +30,7 @@ export const FriendList = ({ friends }) => {
 
 FriendList.propTypes = {
   friends: PropTypes.arrayOf(
-    PropTypes.exact({
+    PropTypes.shape({
       avatar: PropTypes.string,
       name: PropTypes.string,
       isOnline: PropTypes.bool,
